@@ -1,11 +1,118 @@
+{% load static %}
+
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="{% static 'builder/style.css' %}" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" />
     <title>Document</title>
-</head>
-<body>
-    <h1>Welcome to the Resume Builder</h1>
-</body>
+  </head>
+  <body>
+    <div class="resume">
+      <div class="header">
+        <h1><span>{{ about.first_name }}</span> {{ about.last_name }}</h1>
+        <p>{{ about.title }}</p>
+      </div>
+      <div class="summary">
+        <p>{{ about.summary }}</p>
+      </div>
+      <div class="contact">
+        {% if about.github %}
+          <p>
+            <i class="fab fa-github"></i> <a href="{{ about.github }}">{{ about.github }}</a>
+          </p>
+        {% endif %}
+        {% if about.cpen %}
+          <p>
+            <i class="fab fa-codepen"></i> <a href="{{ about.cpen }}">{{ about.cpen }}</a>
+          </p>
+        {% endif %}
+        <p>
+          <i class="fas fa-phone"></i> {{ about.phone }}
+        </p>
+        <p>
+          <i class="fas fa-envelope"></i> {{ about.email }}
+        </p>
+      </div>
+      <div class="content">
+        <div class="section">
+          <div class="heading">Skills</div>
+          <div class="skills">
+            {% for skill in skills %}
+              <div class="skill">{{ skill.name }}</div>
+            {% endfor %}
+          </div>
+        </div>
+        <div class="section">
+          <div class="heading">Work Experience</div>
+          <div class="work-experience">
+            {% for item in work_experience %}
+              <div class="work-experience-item">
+                <div class="item-header">
+                  <h3>{{ item.company }}</h3>
+                  <p>{{ item.position }}</p>
+                </div>
+                <p>
+                  {% if item.present %}
+                    {{ item.start_month }} {{ item.start_year }} - Present
+                  {% else %}
+                    {{ item.start_month }} {{ item.start_year }} - {{ item.end_month }} {{ item.end_year }}
+                  {% endif %}
+                </p>
+                <ul class="job-duties">
+                  {% for duty in item.job_duties.all %}
+                    <li>{{ duty.description }}</li>
+                  {% endfor %}
+                </ul>
+              </div>
+            {% endfor %}
+          </div>
+        </div>
+        <div class="section">
+          <div class="heading">Volunteer Experience</div>
+          <div class="volunteer-experience">
+            {% for item in volunteer %}
+              <div class="volunteer-experience-item">
+                <div class="item-header">
+                  <h3>{{ item.organization }}</h3>
+                  <p>{{ item.position }}</p>
+                </div>
+                <p>{{ item.start_month }} {{ item.start_year }} - {{ item.end_month }} {{ item.end_year }}</p>
+                <ul class="volunteer-duties">
+                  {% for duty in item.volunteer_duties.all %}
+                    <li>{{ duty.description }}</li>
+                  {% endfor %}
+                </ul>
+              </div>
+            {% endfor %}
+          </div>
+        </div>
+        <div class="section">
+          <div class="heading">Education</div>
+          <div class="education">
+            {% for item in education %}
+              <div class="education-item">
+                <div class="item-header">
+                  <h3>{{ item.institution }}</h3>
+                  <p>{{ item.major }}</p>
+                  <i>{{ item.degree }}</i>
+                </div>
+                <p>{{ item.month }} {{ item.year }}</p>
+              </div>
+            {% endfor %}
+          </div>
+        </div>
+        <div class="section">
+          <div class="heading">Certifications</div>
+          <div class="certifications">
+            {% for certification in certifications %}
+              <div class="certification">{{ certification.name }} - {{ certification.institution }}, {{ certification.month }} {{ certification.year }}</div>
+            {% endfor %}
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
 </html>
