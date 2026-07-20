@@ -17,24 +17,34 @@ MONTH_CHOICES = [
 ]
 
 # Create your models here.
+class Skill(models.Model):
+    name = models.CharField(max_length=100)
+
+    def __str__(self):
+        return self.name
+    
+class Resume(models.Model):
+    name = models.CharField(max_length=100)
+    summary = models.TextField(blank=True, null=True)
+    skills = models.ManyToManyField('Skill', related_name='skills', blank=True)
+    jobs = models.ManyToManyField('WorkExperience', related_name='jobs', blank=True)
+    volunteer_experiences = models.ManyToManyField('Volunteer', related_name='volunteer_experiences', blank=True)
+    certifications = models.ManyToManyField('Certification', related_name='certifications', blank=True)
+
+    def __str__(self):
+        return self.name
+    
 class About(models.Model):
     first_name = models.CharField(max_length=100)
     last_name = models.CharField(max_length=100)
-    title = models.CharField(max_length=100)
     email = models.EmailField()
     phone = models.CharField(max_length=20)
-    summary = models.TextField()
     github = models.URLField(blank=True, null=True)
     cpen = models.URLField(blank=True, null=True)
 
     def __str__(self):
         return f"{self.first_name} {self.last_name}"
      
-class Skill(models.Model):
-    name = models.CharField(max_length=100)
-
-    def __str__(self):
-        return self.name
     
 class WorkExperience(models.Model):
     company = models.CharField(max_length=100)
