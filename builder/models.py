@@ -34,7 +34,7 @@ class Resume(models.Model):
     def __str__(self):
         return self.name
     
-class About(models.Model):
+class Profile(models.Model):
     first_name = models.CharField(max_length=100)
     last_name = models.CharField(max_length=100)
     email = models.EmailField()
@@ -93,6 +93,12 @@ class JobDuty(models.Model):
     job = models.ForeignKey(WorkExperience, on_delete=models.CASCADE, related_name='job_duties')
     description = models.TextField()
 
+    def __str__(self):
+        return f"Duty for {self.job.position} at {self.job.company}"
+
 class VoulunteerDuty(models.Model):
     volunteer = models.ForeignKey(Volunteer, on_delete=models.CASCADE, related_name='volunteer_duties')
     description = models.TextField()
+
+    def __str__(self):
+        return f"Duty for {self.volunteer.role} at {self.volunteer.organization}"

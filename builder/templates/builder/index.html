@@ -10,14 +10,14 @@
     <title>Document</title>
   </head>
   <body>
-   <div class="resumes">
-    {% for resume in resumes %}
-      <div class="resume-card">
-        <h2>{{ resume.name }}</h2>
-        <p>{{ resume.summary }}</p>
-        <a href="{% url 'resume' resume.id %}">View Resume</a>
-      </div>
-    {% endfor %}
-   </div>
+    <div class="resumes">
+      {% for resume in resumes %}
+        <div class="resume-card">
+          <h2>{{ resume.name }}</h2>
+          <a href="{% url 'resume' resume.id %}">View Resume</a>
+          <a href="#">Edit Resume</a>
+        </div>
+      {% endfor %}
+    </div>
   </body>
 </html>

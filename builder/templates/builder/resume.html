@@ -12,28 +12,28 @@
   <body>
     <div class="resume">
       <div class="header">
-        <h1><span>{{ about.first_name }}</span> {{ about.last_name }}</h1>
+        <h1><span>{{ profile.first_name }}</span> {{ profile.last_name }}</h1>
         <p>{{ resume.name }}</p>
       </div>
       <div class="summary">
         <p>{{ resume.summary }}</p>
       </div>
       <div class="contact">
-        {% if about.github %}
+        {% if profile.github %}
           <p>
-            <i class="fab fa-github"></i> <a href="{{ about.github }}">{{ about.github }}</a>
+            <i class="fab fa-github"></i> <a href="{{ profile.github }}">{{ profile.github }}</a>
           </p>
         {% endif %}
-        {% if about.cpen %}
+        {% if profile.cpen %}
           <p>
-            <i class="fab fa-codepen"></i> <a href="{{ about.cpen }}">{{ about.cpen }}</a>
+            <i class="fab fa-codepen"></i> <a href="{{ profile.cpen }}">{{ profile.cpen }}</a>
           </p>
         {% endif %}
         <p>
-          <i class="fas fa-phone"></i> {{ about.phone }}
+          <i class="fas fa-phone"></i> {{ profile.phone }}
         </p>
         <p>
-          <i class="fas fa-envelope"></i> {{ about.email }}
+          <i class="fas fa-envelope"></i> {{ profile.email }}
         </p>
       </div>
       <div class="content">
