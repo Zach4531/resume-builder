@@ -5,7 +5,7 @@
 }
 
 html {
-  background-color: #aaa;
+  background-color: #1d1d1d;
 }
 
 body {
@@ -26,19 +26,19 @@ body {
 }
 
 .resume {
-  max-width: 1150px;
+  max-width: 1000px;
   background-color: white !important;
-  margin: 0 auto;
+  margin: 5rem auto;
 }
 
 .content {
-  padding: 0rem 4rem;
+  padding: 0rem 3rem;
 }
 
 .header,
 .summary,
 .contact {
-  padding: 1rem 4rem;
+  padding: 1rem 3rem;
   color: white;
 }
 
@@ -152,7 +152,7 @@ body {
 .job-duties,
 .volunteer-duties {
   padding: 1rem 4rem;
-  width: 90%;
+  /* width: 90%; */
   grid-column: span 2;
   font-weight: 500;
   p {
