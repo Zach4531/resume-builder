@@ -6,12 +6,7 @@ from builder.models import About, Certification, Education, Skill, Volunteer, Wo
 # Create your views here.
 def index(request):
     return render(request, 'builder/index.html', {
-        'about': About.objects.first(),
-        'skills': Skill.objects.all(),
-        'certifications': Certification.objects.all(),
-        'education': Education.objects.all(),
-        'volunteer': Volunteer.objects.all(),
-        'work_experience': WorkExperience.objects.all()
+        'resumes': Resume.objects.all(),
     })
 
 def resume(request, resume_id):
