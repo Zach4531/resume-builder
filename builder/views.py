@@ -1,7 +1,8 @@
 from django.shortcuts import render
 from django.http import HttpResponse
 
-from builder.models import Education, Profile, Resume
+from .models import Education, Profile, Resume
+from .forms import ResumeForm
 
 # Create your views here.
 def index(request):
@@ -15,4 +16,10 @@ def resume(request, resume_id):
         'resume': resume,
         'profile': Profile.objects.first(),
         'education': Education.objects.all(),
+    })
+
+def profile(request, profile_id):
+    profile = Profile.objects.get(id=profile_id)
+    return render(request, 'builder/profile.html', {
+        'profile': profile,
     })
