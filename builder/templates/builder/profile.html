@@ -11,6 +11,40 @@
   </head>
   <body>
     <h2>Edit Profile</h2>
-  {{ profile }}
+    {{ profile }}
+
+    <h2>Skills</h2>
+    <div class="profile-skills">
+      {% for skill in skills %}
+        <span>{{ skill.name }}</span>
+      {% endfor %}
+    </div>
+
+    <h2>Jobs</h2>
+    <div class="work-experience">
+      {% for job in jobs %}
+        <div class="work-item">
+          <p>{{ job.company }}</p>
+          <p>{{ job.position }}</p>
+          <p>
+            {% if job.present %}
+              {{ job.start_month }} {{ job.start_year }} - Present
+            {% else %}
+              {{ job.start_month }} {{ job.start_year }} - {{ job.end_month }} {{ job.end_year }}
+            {% endif %}
+          </p>
+        </div>
+      {% endfor %}
+    </div>
+
+    <h2>Certifications</h2>
+    <div class="certifications-f">
+      {% for cert in certifications %}
+        <div class="certification-d">
+          <p>{{ cert.name }}</p>
+          <p>{{ cert.institution }}</p>
+        </div>
+      {% endfor %}
+    </div>
   </body>
 </html>
