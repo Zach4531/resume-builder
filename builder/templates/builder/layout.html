@@ -10,6 +10,14 @@
     <title>Document</title>
   </head>
   <body>
+    <header>
+        <nav>
+            <ul>
+            <li><a href="{% url 'index' %}">Home</a></li>
+            <li><a href="{% url 'profile' 2 %}">Profile</a></li>
+            </ul>
+        </nav>
+    </header>
     {% block body%}
     {% endblock %}
   </body>
