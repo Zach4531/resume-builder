@@ -1,23 +1,13 @@
-{% load static %}
+{% extends 'builder/layout.html' %}
 
-<!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="{% static 'builder/style.css' %}" />
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" />
-    <title>Document</title>
-  </head>
-  <body>
-    <div class="resumes">
-      {% for resume in resumes %}
-        <div class="resume-card">
-          <h2>{{ resume.name }}</h2>
-          <a href="{% url 'resume' resume.id %}">View Resume</a>
-          <a href="#">Edit Resume</a>
-        </div>
-      {% endfor %}
-    </div>
-  </body>
-</html>
+{% block body %}
+  <div class="resumes">
+    {% for resume in resumes %}
+      <div class="resume-card">
+        <h2>{{ resume.name }}</h2>
+        <a href="{% url 'resume' resume.id %}">View Resume</a>
+        <a href="#">Edit Resume</a>
+      </div>
+    {% endfor %}
+  </div>
+{% endblock %}
